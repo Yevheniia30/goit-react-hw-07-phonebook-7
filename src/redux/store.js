@@ -10,14 +10,14 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+// import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
 import phoneBookReducer from './phoneBook/phoneBook-reducer';
 
-const contactsPersistConfig = {
-  key: 'contacts',
-  storage,
-  blacklist: ['filter'],
-};
+// const contactsPersistConfig = {
+//   key: 'contacts',
+//   storage,
+//   blacklist: ['filter'],
+// };
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,12 +30,12 @@ const middleware = [
 
 const store = configureStore({
   reducer: {
-    phoneBook: persistReducer(contactsPersistConfig, phoneBookReducer),
+    phoneBook: phoneBookReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
-const persistor = persistStore(store);
+// const persistor = persistStore(store);
 
-export default { store, persistor };
+export default store;
