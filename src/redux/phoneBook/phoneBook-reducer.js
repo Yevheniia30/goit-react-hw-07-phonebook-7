@@ -16,10 +16,10 @@ import {
 
 // редюсер на тулкит
 const contacts = createReducer([], {
+  // добавляем в редюсер только  Success
   // получение сохраненных контактов с бекенда
   [getContactSuccess]: (state, { payload }) => payload,
   // добавление
-  // добавляем только при успешном ввыполнении запроса, т е Success
   [addContactSuccess]: (state, { payload }) =>
     state.find(
       ({ name, number }) => name === payload.name || number === payload.number,
@@ -37,7 +37,6 @@ const filter = createReducer('', {
   [filterContact]: (_, { payload }) => payload,
 });
 
-// loading
 const loading = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
@@ -50,8 +49,18 @@ const loading = createReducer(false, {
   [getContactError]: () => false,
 });
 
+const error = createReducer(null, {
+  [addContactError]: (_, { payload }) => payload,
+  [deleteContactError]: (_, { payload }) => payload,
+  [getContactError]: (_, { payload }) => payload,
+  [addContactRequest]: () => null,
+  [deleteContactRequest]: () => null,
+  [getContactRequest]: () => null,
+});
+
 export default combineReducers({
   contacts,
   filter,
   loading,
+  error,
 });

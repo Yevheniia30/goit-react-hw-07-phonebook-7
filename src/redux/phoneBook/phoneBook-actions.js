@@ -18,5 +18,6 @@ export const deleteContactError = createAction('contacts/deleteContactError');
 export const getContactRequest = createAction('contacts/getContactRequest');
 export const getContactSuccess = createAction('contacts/getContactSuccess');
 export const getContactError = createAction('contacts/getContactError');
+
 // экшен фильтра
 export const filterContact = createAction('contacts/filter');

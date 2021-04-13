@@ -33,7 +33,6 @@ export const deleteContact = id => dispatch => {
 
 export const getContact = () => dispatch => {
   dispatch(getContactRequest());
-
   axios
     .get('/contacts')
     .then(({ data }) => dispatch(getContactSuccess(data)))
