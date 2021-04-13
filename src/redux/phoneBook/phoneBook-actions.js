@@ -14,5 +14,9 @@ export const deleteContactSuccess = createAction(
 );
 export const deleteContactError = createAction('contacts/deleteContactError');
 
+// єкшены получения контактов с бекенда
+export const getContactRequest = createAction('contacts/getContactRequest');
+export const getContactSuccess = createAction('contacts/getContactSuccess');
+export const getContactError = createAction('contacts/getContactError');
 // экшен фильтра
 export const filterContact = createAction('contacts/filter');

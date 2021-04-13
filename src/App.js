@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 // import shortid from 'shortid';
 import s from './App.module.css';
 import Form from './Components/Form';
 import ContactsList from './Components/ContactsList';
 import Filter from './Components/Filter';
+import { getContact } from './redux/phoneBook/phoneBook-operations';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getContact();
+  }
   render() {
     return (
       <div className={s.App}>
@@ -20,4 +24,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  getContact: () => dispatch(getContact()),
+});
+
+export default connect(null, mapDispatchToProps)(App);
