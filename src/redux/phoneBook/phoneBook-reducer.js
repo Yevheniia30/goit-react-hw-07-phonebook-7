@@ -1,14 +1,18 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
-import phoneBookActions from './phoneBook-actions';
-// import actionTypes from './phoneBook-types';
-
-console.log(phoneBookActions.addContact.type);
+import {
+  addContactRequest,
+  addContactSuccess,
+  addContactError,
+  deleteContact,
+  filterContact,
+} from './phoneBook-actions';
 
 // редюсер на тулкит
 const contacts = createReducer([], {
   // добавление
-  [phoneBookActions.addContact]: (state, { payload }) =>
+  // добавляем только при успешном ввыполнении запроса, т е Success
+  [addContactSuccess]: (state, { payload }) =>
     state.find(
       ({ name, number }) => name === payload.name || number === payload.number,
     )
@@ -16,16 +20,24 @@ const contacts = createReducer([], {
       : [...state, payload],
 
   // удаление
-  [phoneBookActions.deleteContact]: (state, { payload }) =>
+  [deleteContact]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
 // фильтр
 const filter = createReducer('', {
-  [phoneBookActions.filterContact]: (_, { payload }) => payload,
+  [filterContact]: (_, { payload }) => payload,
+});
+
+// loading
+const loading = createReducer(false, {
+  [addContactRequest]: () => true,
+  [addContactSuccess]: () => false,
+  [addContactError]: () => false,
 });
 
 export default combineReducers({
   contacts,
   filter,
+  loading,
 });
