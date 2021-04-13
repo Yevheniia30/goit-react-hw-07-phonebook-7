@@ -5,7 +5,7 @@ import {
   // addContactError,
   deleteContact,
   // filterContact,
-} from '../../redux/phoneBook/phoneBook-actions';
+} from '../../redux/phoneBook/phoneBook-operations';
 
 import PropTypes from 'prop-types';
 import s from './ContactsList.module.css';
@@ -29,7 +29,7 @@ const ContactsList = ({ contacts = [], onDelete }) => {
 ContactsList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
     }),

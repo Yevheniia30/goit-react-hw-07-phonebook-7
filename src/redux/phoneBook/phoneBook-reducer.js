@@ -4,9 +4,12 @@ import {
   addContactRequest,
   addContactSuccess,
   addContactError,
-  deleteContact,
+  deleteContactRequest,
+  deleteContactSuccess,
+  deleteContactError,
   filterContact,
 } from './phoneBook-actions';
+// import { deleteContact } from './phoneBook-operations';
 
 // редюсер на тулкит
 const contacts = createReducer([], {
@@ -20,7 +23,7 @@ const contacts = createReducer([], {
       : [...state, payload],
 
   // удаление
-  [deleteContact]: (state, { payload }) =>
+  [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
@@ -34,6 +37,9 @@ const loading = createReducer(false, {
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
 });
 
 export default combineReducers({
