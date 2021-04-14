@@ -1,3 +1,19 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "Анастасия",
+      "number": "000-555-22-11",
+      "id": 1
+    },
+    {
+      "name": "qwertyuiopp[",
+      "number": "000-555-22-11",
+      "id": 2
+    },
+    {
+      "name": "qwertyuio",
+      "number": "930621460",
+      "id": 3
+    }
+  ]
 }

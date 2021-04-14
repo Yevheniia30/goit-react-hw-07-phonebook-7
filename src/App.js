@@ -6,6 +6,11 @@ import Form from './Components/Form';
 import ContactsList from './Components/ContactsList';
 import Filter from './Components/Filter';
 import { getContact } from './redux/phoneBook/phoneBook-operations';
+import {
+  getLoading,
+  getAllContacts,
+  getError,
+} from './redux/phoneBook/phoneBook-selectors';
 
 class App extends Component {
   componentDidMount() {
@@ -36,8 +41,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  loading: state.phoneBook.loading,
-  error: state.phoneBook.error,
+  loading: getLoading(state),
+  error: getError(state),
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -6,6 +6,7 @@ import {
   // deleteContact,
   filterContact,
 } from '../../redux/phoneBook/phoneBook-actions';
+import { getFilter } from '../../redux/phoneBook/phoneBook-selectors';
 
 import PropTypes from 'prop-types';
 import s from './Filter.module.css';
@@ -34,7 +35,7 @@ Filter.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  filter: state.phoneBook.filter,
+  filter: getFilter(state),
 });
 
 const mapDispatchToProps = dispatch => ({

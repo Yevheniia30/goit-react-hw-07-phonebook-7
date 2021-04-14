@@ -6,6 +6,7 @@ import {
   deleteContact,
   // filterContact,
 } from '../../redux/phoneBook/phoneBook-operations';
+import { getFilteredContacts } from '../../redux/phoneBook/phoneBook-selectors';
 
 import PropTypes from 'prop-types';
 import s from './ContactsList.module.css';
@@ -37,16 +38,9 @@ ContactsList.propTypes = {
   onDelete: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => {
-  const { contacts, filter } = state.phoneBook;
-  const normalizedFilter = filter.toLowerCase();
-  const filteredContacts = contacts.filter(({ name }) =>
-    name.toLowerCase().includes(normalizedFilter),
-  );
-  return {
-    contacts: filteredContacts,
-  };
-};
+const mapStateToProps = state => ({
+  contacts: getFilteredContacts(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   onDelete: id => dispatch(deleteContact(id)),
