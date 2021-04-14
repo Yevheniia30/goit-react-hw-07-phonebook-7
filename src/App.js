@@ -6,11 +6,7 @@ import Form from './Components/Form';
 import ContactsList from './Components/ContactsList';
 import Filter from './Components/Filter';
 import { getContact } from './redux/phoneBook/phoneBook-operations';
-import {
-  getLoading,
-  getAllContacts,
-  getError,
-} from './redux/phoneBook/phoneBook-selectors';
+import { getLoading, getError } from './redux/phoneBook/phoneBook-selectors';
 
 class App extends Component {
   componentDidMount() {
